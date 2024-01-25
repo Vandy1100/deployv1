@@ -20,4 +20,14 @@ public class AuthorServiceImp implements AuthorService{
     public Author getAuthorById(Integer id) {
         return authorMapping.getAuthorById(id);
     }
+
+    @Override
+    public void addNewAuthor(Author author) {
+        authorMapping.addNewAuthor(author);
+    }
+
+    @Override
+    public void updateAuthor(Integer id, Author author) {
+        authorMapping.updateAuthor(id,author);
+    }
 }

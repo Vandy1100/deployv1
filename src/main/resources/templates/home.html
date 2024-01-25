@@ -40,6 +40,8 @@
           <td th:text="${authors.email}"></td>
           <td>
               <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none" th:href="@{'/authors/'+${authors.id}}">View</a></button>
+              <button type="button" class="btn btn-outline-secondary"><a class="text-decoration-none" th:href="@{'/form-view'}">Add</a></button>
+              <button type="button" class="btn btn-outline-warning"><a class="text-decoration-none" th:href="@{'/update-author/'+${authors.id}}">Update</a></button>
           </td>
       </tr>
       </tbody>

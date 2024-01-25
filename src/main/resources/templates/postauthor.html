@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Author Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2 class="text-center">Create Author</h2>
+<div class="container">
+  <div class="bg-light p-4">
+  <form th:object="${authorRequest}"  enctype="multipart/form-data" th:action="@{/add}" method="post" class="needs-validation" novalidate>
+    <div class="form-group">
+      <input type="text" th:field="*{id}" class="form-control" style="display: none;"/>
+    </div>
+
+    <div class="form-group">
+      <label >Full Name:</label>
+      <input type="text" th:field="*{fullName}" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+      <label >Username:</label>
+      <input type="text" th:field="*{username}" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+      <label >Gender:</label>
+      <select th:field="*{gender}" class="form-control" required>
+        <option value="MALE">Male</option>
+        <option value="FEMALE">Female</option>
+        <!-- Add more options if needed -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Bio:</label>
+      <textarea th:field="*{bio}" class="form-control" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>Address:</label>
+      <input type="text" th:field="*{address}" class="form-control" required/>
+    </div>
+
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" th:field="*{email}" class="form-control" required/>
+    </div>
+
+    <!-- You can add more fields as needed -->
+
+    <div class="form-group">
+      <div class="w-75 ">
+        <img class="w-100 " id="output-image" src="https://imgs.search.brave.com/it3MRB1aorg3HnJlI1w-eFLsqNUrkEn9dC-oWm-tVBs/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJjYXZlLmNv/bS93cC93cDUzNDk2/OTcuanBn">
+        <input  class="w-100 mt-2 form-control form-control-sm" name="file"  type="file" onchange="postImage(event)">
+        <div class="text-warning" th:if="${error}">[[${error}]]</div>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+     <button type="submit" class="btn mt-4  btn-primary">Save</button>
+      <button class="btn mt-4 btn-danger"><a class="text-decoration-none">Back</a></button>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+<script>
+  function postImage(event){
+    let image = document.getElementById("output-image");
+    image.src=URL.createObjectURL(event.target.files[0]);
+  }
+</script>
+
+</body>
+</html>

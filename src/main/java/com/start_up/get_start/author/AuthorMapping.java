@@ -1,5 +1,6 @@
 package com.start_up.get_start.author;
 
+import com.start_up.get_start.author.web.AuthorRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -18,5 +19,16 @@ public class AuthorMapping {
     }
     Author getAuthorById(Integer id){
         return authors.stream().filter(el->el.getId()==id).findFirst().orElse(null);
+    }
+    public void addNewAuthor(Author author){
+        authors.add(author);
+    }
+    public void updateAuthor(int id,Author author) {
+        for (int i = 0; i < authors.size(); i++) {
+            author = authors.get(i);
+            if(author.getId() == id) {
+                authors.set(i,author);
+            }
+        }
     }
 }
